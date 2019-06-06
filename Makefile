@@ -62,6 +62,9 @@ msHKA: msHKA.c msGeneralStats.c
 ms2TwoSite: ms2TwoSite.c msGeneralStats.c
 	$(CC) ms2TwoSite.c msGeneralStats.c -o ms2TwoSite $(CFLAGS)
 
+ms2RSquareByDistance: ms2RSquareByDistance.c msGeneralStats.c
+	$(CC) ms2RSquareByDistance.c msGeneralStats.c -o ms2RSquareByDistance $(CFLAGS)
+
 ms2TwoSite2Popn: ms2TwoSite2Popn.c msGeneralStats.c
 	$(CC) ms2TwoSite2Popn.c msGeneralStats.c -o ms2TwoSite2Popn $(CFLAGS)
 

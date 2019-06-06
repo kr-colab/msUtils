@@ -1350,6 +1350,24 @@ void printPairwiseSampleConfigs(int segsites, int nsam, char **list, double *pos
 	}
 }
 
+void printPairwiseRSquaredDistance(int segsites, int nsam, char **list, double *posit, int nsites){
+	int i,j, config[3];
+	double rs;
+
+	if(segsites < 2){
+		return;
+	}
+	else{
+		for(i=0; i<segsites-1; i++){
+			for(j=i+1; j<segsites; j++){
+				sampleConfig(i, j, nsam, list,config);
+				rs = dij(i, j, nsam, list);
+				printf("%d %d %d %lf %d\n",nsam,config[0],config[1],rs,(int)floor((posit[j]-posit[i]) * nsites));
+			}	
+		}
+	}
+}
+
 //sampleConfig2Popn- fills vector with the sample configuration
 // for sites i and j; 6 dimensions for 2 population 2 site sample config
 void sampleConfig2Popn(int i, int j, int nsam, int popnSize1, char** list, int *config){
@@ -1711,7 +1729,7 @@ int assignClusters(double *hetVec, int n1, int *g1Size, int *membership1, int *g
 void clusterSeqsFromUnsortedHetVec(double *hetVec, int n1, int *g1Size, int *g2Size, char **list){
 	int *membership1 = (int *) malloc (n1*sizeof(int));
 	int *membership2 = (int *) malloc (n1*sizeof(int));
-	int i, swap, tmp, *tmpArray;
+	int  swap, tmp, *tmpArray;
 	swap = assignClusters(hetVec, n1, g1Size, membership1, g2Size, membership2);
 	if (swap)
 	{

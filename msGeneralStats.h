@@ -100,6 +100,7 @@ void sampleConfig2Popn(int i, int j, int nsam, int popnSize1, char** list, int *
 int fourGametes(int i, int j, int nsam, char** list);
 int fourGameteTest(int segsites, int nsam, char **list);
 
+void printPairwiseRSquaredDistance(int segsites, int nsam, char **list, double *posit, int nsites);
 //From Hudson
 double tajd(int nsam, int segsites, double sumk);
 double a1f(int);
